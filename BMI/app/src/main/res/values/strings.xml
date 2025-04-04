@@ -5,4 +5,9 @@
    <string name="tip">Tip</string>
    <string name="total">Total</string>
    <string name="bmi_output">%s, %s</string>
+   <string name="title_home">Potrawy</string>
+   <string name="title_dashboard">Zdjęcie</string>
+   <string name="title_notifications">Wzór PPM</string>
+   <string name="title_recommendations">BMI</string>
+   <string name="image_desc_sample">It\'s just an image</string>
 </resources>

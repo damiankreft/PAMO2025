@@ -1,82 +1,35 @@
 package com.example.BMI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.Editable; // for EditText event handling
-import android.text.TextWatcher; // EditText listener
-import android.widget.EditText; // for bill amount input
-import android.widget.TextView; // for displaying text
 
-import java.text.NumberFormat; // for currency formatting
+import com.example.BMI.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final NumberFormat numberFormat =
-            NumberFormat.getNumberInstance();
-
-    private EditText weightEditText;
-    private EditText heightEditText;
-    private TextView bmiTextView;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        bmiTextView = (TextView) findViewById(R.id.bmiTextView);
-        bmiTextView = (TextView) findViewById(R.id.bmiTextView);
-
-        heightEditText =
-                (EditText) findViewById(R.id.heightEditText);
-        heightEditText.addTextChangedListener(valueChangedTextWatcher);
-
-        weightEditText =
-                (EditText) findViewById(R.id.weightEditText);
-        weightEditText.addTextChangedListener(valueChangedTextWatcher);
-    }
-
-    private void calculate() {
-        String heightString = heightEditText.getText().toString();
-        String weightString = weightEditText.getText().toString();
-        if (!heightString.isEmpty() && !weightString.isEmpty())
-        {
-            double height = Double.parseDouble(heightString);
-            double weight = Double.parseDouble(weightString);
-            double bmi = weight / Math.pow(height, 2);
-            bmiTextView.setText(String.format(getResources().getString(R.string.bmi_output), numberFormat.format(bmi), getBmiStatus(bmi)));
-        }
-    }
-
-    private final TextWatcher valueChangedTextWatcher = new TextWatcher() {
-        @Override
-        public void onTextChanged(CharSequence s, int start,
-                                  int before, int count) {
-            calculate();
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) { }
-
-        @Override
-        public void beforeTextChanged(
-                CharSequence s, int start, int count, int after) { }
-    };
-
-    private String getBmiStatus(double bmi) {
-        String status = "";
-
-        if(bmi < 18.5) {
-            status = "underweight";
-        } else if (bmi >= 18.5 & bmi < 24.99) {
-            status = "healthy";
-        } else if (bmi >= 25 & bmi < 29.99) {
-            status = "overweight";
-        } else if (bmi >= 30) {
-            status = "obesity";
-        }
-
-        return status;
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_dashboard,
+                R.id.navigation_notifications, R.id.navigation_recommendations)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
     }
 }

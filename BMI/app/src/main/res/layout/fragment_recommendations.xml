@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.recommendations.RecommendationsFragment">
+
+    <EditText
+        android:id="@+id/heightEditText"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:digits="0123456789."
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightEditText" />
+
+    <EditText
+        android:id="@+id/weightEditText"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:digits="0123456789."
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="6"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="40dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/bmiTextView"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginTop="24dp"
+        android:background="@color/material_dynamic_secondary70"
+        android:elevation="@dimen/elevation"
+        android:gravity="center"
+        android:padding="@dimen/textview_padding"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heightEditText" />
+
+    <TextView
+        android:id="@+id/heightTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginTop="28dp"
+        android:background="@color/material_dynamic_secondary70"
+        android:elevation="@dimen/elevation"
+        android:gravity="center"
+        android:padding="@dimen/textview_padding"
+        android:text="Height: "
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintEnd_toStartOf="@+id/heightEditText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightTextView" />
+
+    <TextView
+        android:id="@+id/weightTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginEnd="112dp"
+        android:background="@color/material_dynamic_secondary70"
+        android:elevation="@dimen/elevation"
+        android:gravity="center"
+        android:padding="@dimen/textview_padding"
+        android:text="Weight: "
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintEnd_toStartOf="@+id/weightEditText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="40dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/myFragment"
+        android:name="com.example.BMI.ui.recommendations.BmiChart"
+        android:layout_width="411dp"
+        android:layout_height="477dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmiTextView"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout="@layout/fragment_bmi_chart" />
+</androidx.constraintlayout.widget.ConstraintLayout>
