@@ -19,15 +19,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.sql.Array;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.example.BMI.R;
 import com.example.BMI.databinding.FragmentNotificationsBinding;
+import com.example.BMI.services.CalculationsService;
 
 public class NotificationsFragment extends Fragment {
 
@@ -123,14 +122,7 @@ public class NotificationsFragment extends Fragment {
             double height = Double.parseDouble(heightString);
             double weight = Double.parseDouble(weightString);
             int age = Integer.parseInt(ageString);
-            double bmi = 0;
-            if (isWoman) {
-//                bmi = weight / Math.pow(height, 2);
-                bmi = 655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * age);
-            }
-            else {
-                bmi = 66.5 + (13.75 * weight) + (5.003 * height) - (6.775 * age);
-            }
+            double bmi = CalculationsService.getBmi(isWoman, weight, height, age);
             var multiplier = activityLevelMultipliers.get(selected) != null ? activityLevelMultipliers.get(selected) : 1;
             calories = bmi * multiplier;
             bmiTextView.setText(numberFormat.format(calories));
