@@ -122,7 +122,7 @@ public class NotificationsFragment extends Fragment {
             double height = Double.parseDouble(heightString);
             double weight = Double.parseDouble(weightString);
             int age = Integer.parseInt(ageString);
-            double bmi = CalculationsService.getBmi(isWoman, weight, height, age);
+            double bmi = CalculationsService.getBenedictHarrisBasalMetabolicRate(isWoman, weight, height, age);
             var multiplier = activityLevelMultipliers.get(selected) != null ? activityLevelMultipliers.get(selected) : 1;
             calories = bmi * multiplier;
             bmiTextView.setText(numberFormat.format(calories));
