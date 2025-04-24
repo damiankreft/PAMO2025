@@ -3,7 +3,7 @@ package com.example.BMI;
 import com.example.BMI.services.CalculationsService;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CalculationsTests {
     @Test
