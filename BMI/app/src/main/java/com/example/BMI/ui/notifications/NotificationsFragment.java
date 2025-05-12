@@ -41,7 +41,7 @@ public class NotificationsFragment extends Fragment {
     private EditText AgeEditText;
     private TextView bmiTextView;
 
-    private Switch genderSwitch;
+    private com.google.android.material.switchmaterial.SwitchMaterial genderSwitch;
     Spinner mySpinner;
 
     String selected = "";
@@ -80,7 +80,7 @@ public class NotificationsFragment extends Fragment {
         AgeEditText = (EditText) getView().findViewById(R.id.AgeEditText);
         AgeEditText.addTextChangedListener(valueChangedTextWatcher);
 
-        genderSwitch = (Switch) getView().findViewById(R.id.switchGender);
+        genderSwitch = (com.google.android.material.switchmaterial.SwitchMaterial) getView().findViewById(R.id.switchGender);
         genderSwitch.setOnCheckedChangeListener((new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 isWoman = isChecked;
