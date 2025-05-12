@@ -1,5 +1,8 @@
 package org.example
 
+/**
+ * Explicitly declare the correct type for each variable
+ */
 fun main() {
     val a: Int = 1000
     val b: String = "log message"
